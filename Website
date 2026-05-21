@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer in Mongolia | Монголд Сайн Дурын Үйлчилгээ</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sky: #1B4B8A;
+  --sky-dark: #0F2D5A;
+  --sky-light: #EAF2FF;
+  --gold: #C8860A;
+  --gold-warm: #E8A020;
+  --gold-light: #FFF4DC;
+  --cream: #FAFAF7;
+  --text-dark: #1A1A1A;
+  --text-mid: #444444;
+  --text-muted: #777777;
+  --border: rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── LANGUAGE TOGGLE ── */
+.lang-bar {
+  background: var(--sky-dark);
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 48px;
+  gap: 4px;
+}
+.lang-btn {
+  font-size: 12px; font-weight: 500;
+  padding: 4px 12px; border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent; color: rgba(255,255,255,0.6);
+  cursor: pointer; transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.lang-btn.active {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border-color: rgba(255,255,255,0.5);
+}
+.lang-btn:hover:not(.active) { color: white; border-color: rgba(255,255,255,0.35); }
+
+/* hide/show language content */
+[data-lang] { display: none; }
+body.lang-en [data-lang="en"] { display: contents; }
+body.lang-mn [data-lang="mn"] { display: contents; }
+/* for block-level elements */
+.block-en, .block-mn { display: none; }
+body.lang-en .block-en { display: block; }
+body.lang-mn .block-mn { display: block; }
+.flex-en, .flex-mn { display: none; }
+body.lang-en .flex-en { display: flex; }
+body.lang-mn .flex-mn { display: flex; }
+.inline-en, .inline-mn { display: none; }
+body.lang-en .inline-en { display: inline; }
+body.lang-mn .inline-mn { display: inline; }
+.iblock-en, .iblock-mn { display: none; }
+body.lang-en .iblock-en { display: inline-block; }
+body.lang-mn .iblock-mn { display: inline-block; }
+
+/* ── NAV ── */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px; background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-mark {
+  width: 36px; height: 36px; background: var(--sky); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-brand { font-size: 15px; font-weight: 600; color: var(--sky); }
+.nav-brand span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { font-size: 13px; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--sky); }
+.nav-cta {
+  background: var(--sky); color: white;
+  font-size: 13px; font-weight: 500;
+  padding: 8px 18px; border-radius: 6px; text-decoration: none;
+}
+.nav-cta:hover { background: var(--sky-dark); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; overflow: hidden;
+  background: linear-gradient(155deg, #0C2248 0%, #1B4B8A 50%, #2D6BAD 100%);
+  padding: 88px 48px 80px; text-align: center; color: white;
+}
+.hero-bg {
+  position: absolute; inset: 0; opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 4L44 24L24 44L4 24Z' fill='white'/%3E%3C/svg%3E");
+  background-size: 36px 36px;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold-warm); background: rgba(200,134,10,0.15);
+  border: 1px solid rgba(200,134,10,0.3);
+  padding: 5px 14px; border-radius: 20px; margin-bottom: 26px;
+}
+.hero h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 50px; font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px;
+  margin-bottom: 22px; max-width: 680px; margin-left: auto; margin-right: auto;
+}
+.hero h1 em { font-style: italic; color: var(--gold-warm); }
+.hero-sub {
+  font-size: 17px; font-weight: 300; line-height: 1.75;
+  color: rgba(255,255,255,0.78); max-width: 480px; margin: 0 auto 38px;
+}
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-gold {
+  background: var(--gold); color: white;
+  font-size: 14px; font-weight: 600; padding: 13px 28px;
+  border-radius: 8px; text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s; display: inline-block;
+}
+.btn-gold:hover { background: #a06d05; transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: white;
+  font-size: 14px; font-weight: 500; padding: 13px 28px;
+  border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.35);
+  text-decoration: none; display: inline-block;
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.7); }
+
+/* ── STATS ── */
+.stats-bar { background: white; border-bottom: 1px solid var(--border); display: flex; justify-content: center; }
+.stat { flex: 1; max-width: 210px; text-align: center; padding: 24px 16px; border-right: 1px solid var(--border); }
+.stat:last-child { border-right: none; }
+.stat-num { font-size: 28px; font-weight: 600; color: var(--sky); line-height: 1; margin-bottom: 5px; }
+.stat-label { font-size: 12px; color: var(--text-muted); }
+
+/* ── WHO SECTION ── */
+.who-section { padding: 68px 48px; background: #F5F5F0; }
+.section-header { text-align: center; margin-bottom: 40px; }
+.section-tag { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 10px; }
+.section-title { font-family: 'Libre Baskerville', serif; font-size: 32px; font-weight: 700; color: var(--text-dark); line-height: 1.25; }
+.cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 980px; margin: 0 auto; }
+.card { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; }
+.card-head { padding: 28px 28px 22px; border-bottom: 1px solid var(--border); }
+.card-icon { width: 46px; height: 46px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+.icon-blue { background: var(--sky-light); }
+.icon-gold { background: var(--gold-light); }
+.card-title { font-size: 18px; font-weight: 600; margin-bottom: 7px; }
+.card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+.card-body { padding: 18px 28px 24px; }
+.feat-list { list-style: none; }
+.feat-list li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; font-size: 14px; color: var(--text-mid); border-bottom: 1px solid var(--border); }
+.feat-list li:last-child { border-bottom: none; }
+.dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.dot-blue { background: var(--sky); }
+.dot-gold { background: var(--gold); }
+.card-btn { display: inline-block; margin-top: 20px; font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 7px; text-decoration: none; transition: opacity 0.2s; }
+.card-btn:hover { opacity: 0.85; }
+.card-btn-blue { background: var(--sky); color: white; }
+.card-btn-gold { background: var(--gold); color: white; }
+
+/* ── HOW IT WORKS ── */
+.how-section { background: var(--sky); padding: 68px 48px; text-align: center; color: white; }
+.how-section .section-tag { color: var(--gold-warm); }
+.how-section .section-title { color: white; max-width: 480px; margin: 0 auto 44px; }
+.steps { display: flex; max-width: 820px; margin: 0 auto; position: relative; }
+.steps::before { content: ''; position: absolute; top: 28px; left: 18%; width: 64%; height: 1px; background: rgba(255,255,255,0.18); }
+.step { flex: 1; text-align: center; padding: 0 20px; }
+.step-num { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.28); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; margin: 0 auto 18px; position: relative; z-index: 1; }
+.step-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+.step-body { font-size: 13.5px; color: rgba(255,255,255,0.62); line-height: 1.65; }
+
+/* ── SOCIAL ── */
+.social-section { padding: 60px 48px; background: white; text-align: center; }
+.social-section .section-tag { color: var(--gold); }
+.social-desc { font-size: 15px; color: var(--text-muted); margin: 8px 0 30px; }
+.social-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.social-btn { display: inline-flex; align-items: center; gap: 9px; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid transparent; transition: transform 0.15s, box-shadow 0.15s; }
+.social-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 18px rgba(0,0,0,0.12); }
+.btn-linkedin { background: #0A66C2; color: white; }
+.btn-instagram { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
+.btn-facebook { background: #1877F2; color: white; }
+
+/* ── FOOTER ── */
+footer { background: #0A1929; color: rgba(255,255,255,0.55); padding: 28px 48px; text-align: center; font-size: 13px; }
+footer strong { color: rgba(255,255,255,0.88); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .lang-bar { padding: 6px 20px; }
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 56px; }
+  .hero h1 { font-size: 32px; }
+  .hero-sub { font-size: 15px; }
+  .stats-bar { flex-wrap: wrap; }
+  .stat { min-width: 50%; }
+  .who-section, .how-section, .social-section { padding: 48px 24px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .steps { flex-direction: column; gap: 28px; }
+  .steps::before { display: none; }
+  footer { padding: 24px 20px; }
+}
+</style>
+</head>
+<body class="lang-en">
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('mn')">Монгол</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-mark">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2L3 7v11h14V7L10 2Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M7 18v-6h6v6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="10" cy="9" r="1.5" fill="white"/>
+      </svg>
+    </div>
+    <div class="nav-brand">Volunteer in <span>Mongolia</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#"><span class="inline-en">For Youth</span><span class="inline-mn">Залуучуудад</span></a>
+    <a href="#"><span class="inline-en">For Organizations</span><span class="inline-mn">Байгууллагад</span></a>
+    <a href="#"><span class="inline-en">Opportunities</span><span class="inline-mn">Боломжууд</span></a>
+    <a href="#"><span class="inline-en">About</span><span class="inline-mn">Бидний тухай</span></a>
+  </div>
+  <a class="nav-cta" href="#">
+    <span class="inline-en">Get Started</span>
+    <span class="inline-mn">Эхлэх</span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">🇲🇳 <span class="inline-en">Mongolia's Youth Volunteer Platform</span><span class="inline-mn">Монголын залуучуудын сайн дурын платформ</span></div>
+
+    <h1 class="block-en">Change your community.<br><em>Change your future.</em></h1>
+    <h1 class="block-mn">Нийгмээ өөрчил.<br><em>Ирээдүйгээ өөрчил.</em></h1>
+
+    <p class="hero-sub block-en">A hub for Mongolian youth to find meaningful volunteer opportunities — and for organizations to reach passionate changemakers.</p>
+    <p class="hero-sub block-mn">Монголын залуучууд утга учиртай сайн дурын ажил олж, байгууллагууд идэвхтэй өөрчлөгчидтэй холбогдох платформ.</p>
+
+    <div class="hero-actions">
+      <a class="btn-gold" href="#"><span class="inline-en">Find Volunteer Work</span><span class="inline-mn">Сайн дурын ажил хайх</span></a>
+      <a class="btn-ghost" href="#"><span class="inline-en">Post an Opportunity →</span><span class="inline-mn">Зар байршуулах →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label"><span class="inline-en">Active volunteers</span><span class="inline-mn">Идэвхтэй сайн дурынхан</span></div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">40+</div>
+    <div class="stat-label"><span class="inline-en">Partner organizations</span><span class="inline-mn">Хамтрагч байгууллага</span></div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">12</div>
+    <div class="stat-label"><span class="inline-en">Aimags covered</span><span class="inline-mn">Аймаг хамрагдсан</span></div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">1,200+</div>
+    <div class="stat-label"><span class="inline-en">Hours contributed</span><span class="inline-mn">Цаг зарцуулсан</span></div>
+  </div>
+</div>
+
+<!-- WHO IT'S FOR -->
+<section class="who-section">
+  <div class="section-header">
+    <span class="section-tag"><span class="inline-en">Who it's for</span><span class="inline-mn">Хэнд зориулагдсан</span></span>
+    <h2 class="section-title block-en">Built for youth. Open to all who care.</h2>
+    <h2 class="section-title block-mn">Залуучуудад зориулсан. Хэн бүхэнд нээлттэй.</h2>
+  </div>
+  <div class="cards-grid">
+
+    <!-- Youth card -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon icon-blue">🙌</div>
+        <div class="card-title" style="color: var(--sky);">
+          <span class="inline-en">For Young Volunteers</span>
+          <span class="inline-mn">Залуу сайн дурынханд</span>
+        </div>
+        <div class="card-desc block-en">Discover opportunities to give back, grow your skills, and be part of something bigger in your community.</div>
+        <div class="card-desc block-mn">Нийгэмдээ хувь нэмрээ оруулах, ур чадвараа хөгжүүлэх, том зорилгын нэг хэсэг болох боломжийг олоорой.</div>
+      </div>
+      <div class="card-body">
+        <ul class="feat-list">
+          <li><span class="dot dot-blue"></span><span class="inline-en">Browse vetted volunteer opportunities near you</span><span class="inline-mn">Ойр орчмын шалгагдсан боломжуудыг харах</span></li>
+          <li><span class="dot dot-blue"></span><span class="inline-en">Track your hours and see your real-world impact</span><span class="inline-mn">Цагаа бүртгэж, нөлөөлөлөө харах</span></li>
+          <li><span class="dot dot-blue"></span><span class="inline-en">Connect with like-minded youth across Mongolia</span><span class="inline-mn">Монгол даяар адил бодолтой залуучуудтай холбогдох</span></li>
+          <li><span class="dot dot-blue"></span><span class="inline-en">Earn recognition certificates from organizations</span><span class="inline-mn">Байгууллагаас хүлээн зөвшөөрлийн гэрчилгээ авах</span></li>
+        </ul>
+        <a class="card-btn card-btn-blue" href="#"><span class="inline-en">Start volunteering →</span><span class="inline-mn">Эхлэх →</span></a>
+      </div>
+    </div>
+
+    <!-- Organizations card -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon icon-gold">🏛️</div>
+        <div class="card-title" style="color: var(--gold);">
+          <span class="inline-en">For Organizations</span>
+          <span class="inline-mn">Байгууллагуудад</span>
+        </div>
+        <div class="card-desc block-en">Post projects, find motivated youth, and amplify your social impact across Mongolia's communities.</div>
+        <div class="card-desc block-mn">Төсөл байршуулж, идэвхтэй залуучуудыг олж, Монголын нийгэмд үзүүлэх нөлөөгөө нэмэгдүүлээрэй.</div>
+      </div>
+      <div class="card-body">
+        <ul class="feat-list">
+          <li><span class="dot dot-gold"></span><span class="inline-en">Post volunteer opportunities for free</span><span class="inline-mn">Үнэгүйгээр зар байршуулах</span></li>
+          <li><span class="dot dot-gold"></span><span class="inline-en">Access a pool of motivated young Mongolians</span><span class="inline-mn">Идэвхтэй залуу монголчуудтай холбогдох</span></li>
+          <li><span class="dot dot-gold"></span><span class="inline-en">Manage applications and communications simply</span><span class="inline-mn">Өргөдөл, харилцааг хялбархан удирдах</span></li>
+          <li><span class="dot dot-gold"></span><span class="inline-en">Build your organization's visibility and reach</span><span class="inline-mn">Байгууллагынхаа таниулбар нэмэгдүүлэх</span></li>
+        </ul>
+        <a class="card-btn card-btn-gold" href="#"><span class="inline-en">Post an opportunity →</span><span class="inline-mn">Зар байршуулах →</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <span class="section-tag"><span class="inline-en">How it works</span><span class="inline-mn">Хэрхэн ажилладаг</span></span>
+  <h2 class="section-title block-en">Three steps to start</h2>
+  <h2 class="section-title block-mn">Гурван алхамаар эхэл</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title"><span class="inline-en">Create your profile</span><span class="inline-mn">Профайл үүсгэх</span></div>
+      <div class="step-body block-en">Sign up as a volunteer or organization and tell us about your interests and goals.</div>
+      <div class="step-body block-mn">Сайн дурын хүн эсвэл байгууллага болж бүртгүүлж, сонирхол болон зорилгоо мэдэгдээрэй.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title"><span class="inline-en">Find your match</span><span class="inline-mn">Тохирлоо олох</span></div>
+      <div class="step-body block-en">Browse curated opportunities or post your own. Filter by location, cause, and time needed.</div>
+      <div class="step-body block-mn">Сонгосон боломжуудыг үзэх эсвэл өөрийнхөө зар байршуулах. Байршил, зорилго, цагаар шүүх.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title"><span class="inline-en">Make an impact</span><span class="inline-mn">Нөлөө үзүүлэх</span></div>
+      <div class="step-body block-en">Show up, contribute, and watch your community transform — one act of service at a time.</div>
+      <div class="step-body block-mn">Ирж, хувь нэмрээ оруул, нийгэм өөрчлөгдөхийг ажигла — нэг үйлдлээс эхэлж.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="social-section">
+  <span class="section-tag"><span class="inline-en">Community</span><span class="inline-mn">Нийгэмлэг</span></span>
+  <h2 class="section-title block-en">Follow our journey</h2>
+  <h2 class="section-title block-mn">Манай замналыг дагаарай</h2>
+  <p class="social-desc block-en">Stories, updates, and opportunities — across all our channels.</p>
+  <p class="social-desc block-mn">Түүх, мэдээ, боломжууд — бүх сувгаар.</p>
+  <div class="social-row">
+    <a class="social-btn btn-linkedin" href="#">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="white"/></svg>
+      LinkedIn
+    </a>
+    <a class="social-btn btn-instagram" href="#">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Instagram
+    </a>
+    <a class="social-btn btn-facebook" href="#">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      Facebook
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>Volunteer in Mongolia</strong>. <span class="inline-en">Built for youth. Built for good.</span><span class="inline-mn">Залуучуудад зориулсан. Сайн сайхны төлөө.</span> 🇲🇳</p>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  document.documentElement.lang = lang === 'mn' ? 'mn' : 'en';
+}
+</script>
+</body>
+</html>
